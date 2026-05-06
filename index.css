@@ -1,0 +1,320 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { motion } from "motion/react";
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Linkedin, 
+  Github, 
+  ExternalLink, 
+  Download, 
+  TrendingUp, 
+  Users, 
+  ShieldCheck, 
+  Cpu,
+  GraduationCap,
+  Briefcase,
+  Award,
+  Zap
+} from "lucide-react";
+
+const DATA = {
+  name: "Palak Chawla",
+  title: "Human Resources Business Partner",
+  contact: {
+    phone: "+91 9560193311",
+    email: "palakchawla908@gmail.com",
+    location: "New Delhi, India",
+    linkedin: "palakchawla-hrbp", // Placeholder
+  },
+  summary: "Results-oriented HR Business Partner with 3.5+ years of strategic experience in optimizing workforce performance and HR operations. Expert in spearheading digital transformations (Zoho HR, ATS Tallite) and engineering behavioral-based frameworks that drive retention and cultural alignment. Committed to data-driven decision making and organizational scalability.",
+  impactMetrics: [
+    { label: "Attrition Reduction", value: "20%", icon: TrendingUp },
+    { label: "Satisfaction Lift", value: "50%", icon: Users },
+    { label: "Screening Efficiency", value: "24h/wk", icon: Zap },
+    { label: "Data Accuracy", value: "100%", icon: ShieldCheck },
+  ],
+  experience: [
+    {
+      title: "Assistant Manager – HRBP",
+      company: "Hindustan Tapes Private Limited (HTPL)",
+      period: "Dec 2024 – Jan 2026",
+      impact: [
+        "Strategic Workforce Planning: Collaborated with executive leadership to architect department scaling strategies, ensuring talent alignment with 24-month business objectives.",
+        "Performance Management & BSC: Spearheaded the implementation of the Balanced Scorecard (BSC) and Performance Management System (PMS), resulting in a 50% surge in documented employee engagement.",
+        "Grading & Evaluation Architecture: Engineered a comprehensive Employee Grading & Evaluation System to standardize career progression and internal parity across departments.",
+        "Retention Engineering: Deployed behavioral-based interview frameworks and advanced employee engagement initiatives, realizing a 20% reduction in 90-day attrition.",
+        "Systems & Digital Transformation: Automated end-to-end employee lifecycle administration using specialized HRIS tools, achieving 100% payroll accuracy and total regulatory compliance."
+      ]
+    },
+    {
+      title: "HR Business Partner Associate",
+      company: "People Staffing Solutions",
+      period: "Feb 2022 – July 2023",
+      impact: [
+        "Revenue Generation: Outperformed annual growth targets by securing ₹10L per annum in individual billings through strategic client retention and high-volume placement excellence.",
+        "Operational Optimization: Re-engineered APMS/ATS workflows, successfully reclaiming 24 administrative hours per week through intelligent screening automation.",
+        "Market Intelligence: Orchestrated niche talent mapping strategies for high-impact roles, decreasing turnaround time (TAT) by 40% compared to industry benchmarks."
+      ]
+    },
+    {
+      title: "Sourcing Specialist",
+      company: "Talent Advisors",
+      period: "Jan 2021 – Oct 2021",
+      impact: [
+        "High-Velocity Coordination: Synchronized a high-frequency interview matrix of 200+ monthly engagements with zero scheduling conflicts.",
+        "Pipeline Management: Evaluated and screened 800+ profiles monthly to secure a continuous flow of tier-1 talent for immediate and forecasted organizational needs."
+      ]
+    }
+  ],
+  skills: [
+    "Workforce Planning",
+    "Employee Relations & Engagement",
+    "HR Documentation",
+    "HRIS Optimization",
+    "Induction & Onboarding",
+    "Strategic Sourcing",
+    "Hire to Retire Lifecycle",
+    "ATS Workflow Engineering",
+    "Performance Management"
+  ],
+  education: [
+    {
+      degree: "Certified in HR Management & Analytics",
+      institution: "IIM Kozhikode",
+      period: "June 2024"
+    },
+    {
+      degree: "Bachelors of Commerce",
+      institution: "PGDAV College, University of Delhi",
+      period: "July 2018"
+    }
+  ],
+  technologies: ["Zoho HR", "ATS Tallite", "Balanced Scorecard", "MS Excel (VLOOKUP/Pivots)"]
+};
+
+const SectionHeader = ({ title, icon: Icon }: { title: string; icon: any }) => (
+  <div className="flex items-center gap-3 mb-8 border-b border-gray-200 pb-2">
+    <Icon className="w-5 h-5 text-executive-gold" />
+    <h2 className="text-xl font-semibold uppercase tracking-wider text-executive-navy">{title}</h2>
+  </div>
+);
+
+export default function App() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  };
+
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <div className="min-h-screen bg-executive-slate selection:bg-executive-gold/20 scroll-smooth">
+      {/* Mobile-only print warning or floating download button */}
+      <div className="fixed bottom-8 right-8 z-50 no-print">
+        <button 
+          onClick={() => window.print()}
+          className="flex items-center gap-2 bg-executive-navy text-white px-6 py-3 rounded-full shadow-2xl hover:bg-executive-gold transition-colors duration-300 group"
+        >
+          <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
+          <span className="font-medium">Export ATS Version</span>
+        </button>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 py-12 md:py-20 lg:px-12 bg-white shadow-xl min-h-screen">
+        
+        {/* Header Section */}
+        <header className="mb-16">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-8 mb-10">
+            <motion.div 
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-5xl md:text-7xl font-bold text-executive-navy mb-2 tracking-tighter">
+                {DATA.name.split(' ')[0]} <span className="text-executive-gold italic font-light">{DATA.name.split(' ')[1]}</span>
+              </h1>
+              <p className="text-lg md:text-xl font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                <Briefcase className="w-4 h-4 text-executive-gold" />
+                {DATA.title}
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ x: 20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 text-sm font-medium text-gray-600"
+            >
+              <a href={`mailto:${DATA.contact.email}`} className="flex items-center gap-2 hover:text-executive-gold transition-colors">
+                <Mail className="w-4 h-4" /> {DATA.contact.email}
+              </a>
+              <a href={`tel:${DATA.contact.phone}`} className="flex items-center gap-2 hover:text-executive-gold transition-colors">
+                <Phone className="w-4 h-4" /> {DATA.contact.phone}
+              </a>
+              <div className="flex items-center gap-2 italic">
+                <MapPin className="w-4 h-4" /> {DATA.contact.location}
+              </div>
+              <a href="#" className="flex items-center gap-2 hover:text-executive-gold transition-colors">
+                <Linkedin className="w-4 h-4" /> palak-chawla-hr
+              </a>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="p-8 bg-executive-slate border-l-4 border-executive-gold italic text-lg leading-relaxed text-executive-ink"
+          >
+            "{DATA.summary}"
+          </motion.div>
+        </header>
+
+        {/* Impact Metrics Section */}
+        <section className="mb-20">
+          <SectionHeader title="Strategic Impact" icon={TrendingUp} />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {DATA.impactMetrics.map((metric, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -5 }}
+                className="p-6 bg-white border border-gray-100 shadow-sm rounded-xl text-center flex flex-col items-center gap-2"
+              >
+                <div className="p-3 bg-executive-slate rounded-full mb-2">
+                  <metric.icon className="w-6 h-6 text-executive-gold" />
+                </div>
+                <span className="text-3xl font-bold text-executive-navy">{metric.value}</span>
+                <span className="text-xs uppercase tracking-widest text-gray-400 font-semibold">{metric.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          
+          {/* Left Column: Experience */}
+          <div className="lg:col-span-8">
+            <SectionHeader title="Professional Trajectory" icon={Award} />
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-12"
+            >
+              {DATA.experience.map((job, idx) => (
+                <motion.div key={idx} variants={itemVariants} className="relative pl-8 border-l border-gray-200">
+                  <div className="absolute -left-[5px] top-0 w-[10px] h-[10px] rounded-full bg-executive-gold shadow-[0_0_10px_rgba(180,83,9,0.4)]" />
+                  <div className="mb-4">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-1">
+                      <h3 className="text-2xl font-bold text-executive-navy">{job.title}</h3>
+                      <span className="text-sm font-mono text-executive-gold font-semibold px-3 py-1 bg-executive-gold/5 rounded-full">{job.period}</span>
+                    </div>
+                    <p className="text-lg font-serif italic text-gray-600 mb-4">{job.company}</p>
+                  </div>
+                  <ul className="space-y-3">
+                    {job.impact.map((point, pIdx) => (
+                      <li key={pIdx} className="text-gray-700 leading-relaxed flex gap-3 group">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-executive-navy/20 group-hover:bg-executive-gold transition-colors shrink-0" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right Column: Skills & Education */}
+          <div className="lg:col-span-4 space-y-16">
+            
+            {/* Core Competencies */}
+            <section>
+              <SectionHeader title="Expertise" icon={Zap} />
+              <div className="flex flex-wrap gap-2">
+                {DATA.skills.map((skill, idx) => (
+                  <motion.span 
+                    key={idx}
+                    whileHover={{ scale: 1.05 }}
+                    className="px-4 py-2 bg-executive-navy text-white text-xs font-semibold uppercase tracking-wider rounded-lg shadow-sm"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </section>
+
+            {/* HR Tech Stack */}
+            <section>
+              <SectionHeader title="HR Tech Suite" icon={Cpu} />
+              <div className="grid grid-cols-1 gap-3">
+                {DATA.technologies.map((tech, idx) => (
+                  <div key={idx} className="flex items-center gap-3 p-3 bg-executive-slate rounded-lg border border-gray-100">
+                    <ShieldCheck className="w-4 h-4 text-executive-gold" />
+                    <span className="text-sm font-medium text-executive-navy">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Education */}
+            <section>
+              <SectionHeader title="Academic Foundation" icon={GraduationCap} />
+              <div className="space-y-6">
+                {DATA.education.map((edu, idx) => (
+                  <div key={idx} className="group">
+                    <h3 className="font-bold text-executive-navy group-hover:text-executive-gold transition-colors leading-tight mb-1">{edu.degree}</h3>
+                    <p className="text-sm text-gray-500 font-serif italic">{edu.institution}</p>
+                    <p className="text-xs font-mono text-gray-400 mt-1 uppercase tracking-tighter">{edu.period}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+        {/* Footer / Contact Final */}
+        <footer className="mt-24 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-400 text-xs uppercase tracking-[0.2em]">
+          <div>© {currentYear} Palak Chawla • Confidential & Proprietary</div>
+          <div className="flex gap-8">
+            <span className="hover:text-executive-gold cursor-default transition-colors">Privacy</span>
+            <span className="hover:text-executive-gold cursor-default transition-colors">Integrity</span>
+            <span className="hover:text-executive-gold cursor-default transition-colors">Vision</span>
+          </div>
+        </footer>
+      </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media print {
+          .no-print { display: none !important; }
+          body { background: white !important; }
+          .max-w-5xl { 
+            box-shadow: none !important; 
+            max-width: 100% !important;
+            padding: 0 !important;
+          }
+          header, section, footer {
+            break-inside: avoid;
+          }
+        }
+      `}} />
+    </div>
+  );
+}
