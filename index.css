@@ -16,7 +16,7 @@ import {
   Rocket,
   LayoutDashboard
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 
 const DATA = {
   name: "Palak Chawla",
@@ -77,7 +77,7 @@ const DATA = {
   ]
 };
 
-const BentoCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+const BentoCard = ({ children, className = "" }: { children: ReactNode; className?: string; key?: any }) => (
   <motion.div 
     whileHover={{ y: -4, scale: 1.01 }}
     className={`bento-card ${className}`}
